@@ -87,3 +87,9 @@
 list = [name: "hoge", age: 1]
 list[:name]　# hoge
 ```
+
+## map
+- unorderdedMap
+- ```%{key => value}```
+- key がアトムの場合は ```map.key``` で value を取得できる
+
