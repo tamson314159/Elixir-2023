@@ -25,3 +25,6 @@
 - Process ID
 - reference
 - port identifier
+
+## データ型
+- 前項と同じ
