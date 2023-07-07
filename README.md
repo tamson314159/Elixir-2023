@@ -481,3 +481,13 @@ Map.put_new(map, "apple", 400)
 - キーを持つか調べる ```is_map_key(map, key)```
 - キーのリスト ```Map.keys(map)```
 - 値のリスト ```Map.values(map)```
+
+### for マクロ
+
+- 以下の形
+
+``` elixir
+for 一時的な変数 <- リスト do
+  処理
+end
+```
