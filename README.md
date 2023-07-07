@@ -634,3 +634,12 @@ Enum.map_every([1, 2, 3, 4, 5], 2, fn x -> x + 10000 end)
 
 - ```Enum.map_join/3``` は ```Enum.map/2``` の後に ```Enum.join/2``` を行う
 - それぞれで処理するよりまとめた関数で処理する方が高速
+
+### Stream
+
+- enumerable を処理する
+- 遅延処理が可能（Enum は全て先行処理）
+- Enum は先にリストを生成している
+- Stream は即時に計算するのではなく Stream 構造体を返す
+- Stream 構造体は将来適用される関数を保持している
+- ```Enum.take(stream, n)``` 等で値を取得できる
