@@ -358,3 +358,65 @@ end
 - シンタックスシュガー ```if hoge, do: fuga, else: piyo```
 - ```do:``` の後にはスペースを入れる
 - 最も外側の関数に対してバインドされる
+
+## Day2 Section3
+
+### リストの操作
+
+- ```in```, ```not in```
+- 長さ ```length(list)```
+- 要素の取得 ```List.first(list)```, ```List.last(list)```
+- 挿入 ```List.insert_at(list, i, v)```
+  - コンス演算子 ```[head | tail]```
+- 削除 ```List.delete_at(list, i)```
+- 反転 ```Enum.reverse(list)```
+- 平坦化 ```List.flatten(list)```
+  - 多重にネストされていても全て平坦化される（自主的に試した：Day2_Section3/flatten.exs
+- 全て新しいリストが作成されることに注意
+
+### タプルの操作
+
+- インデックスを指定して要素を取得 ```elem(tuple, i)```
+- 置換 ```put_elem(tuple, i, v)```
+- サイズ ```tuple_size(tuple)```
+- 末尾への追加 ```Tuple.append(tuple, v)```
+- インデックスを指定して追加 ```Tuple.insert_at(tuple, i, v)```
+- インデックスを指定して削除 ```Tuple.delete_at(tuple, i)```
+- タプルをリストに変換する ```Tuple.to_list(tuple)```
+
+### キーワードリストの操作
+
+- 値の取得 ```Keyword.get(keywords, key)```
+  - アリティは3
+    - デフォルト値を指定（Elixir 実践ガイドより）
+  - ```list[key]``` でもよい
+- 要素の追加 ```|```, ```Keyword.put/3```, ```Keyword.put_new/3```
+- 要素の削除 ```Keyword.delete(keywords, key)```
+- キーワードリストかどうか調べる ```Keyword.keyword?(term)```
+- キーを持つか調べる ```Keyword.has_key?(keywords, key)```
+- 結合 ```Keyword.merge(keywords1, keywords2)```
+
+### マップの操作
+
+- 値の取得 ```map[key]```, ```Map.get(map, key)```
+  - キーがアトムの場合 ```map.key```
+- 要素の追加 ```Map.put(map, key, value)```
+- 更新を行わずに追加
+
+``` elixir
+map = %{"apple" => 100, "banana" => 200, "melon" => 300}
+Map.put_new(map, "apple", 400)
+# %{"apple" => 100, "banana" => 200, "melon" => 300}
+```
+
+- 更新 ```Map.replace(map, key, value)```
+  - key に存在しない key を指定した場合を自主的に試したが、元の map が返された
+  - ```%{map | key1 => value1, key2 => value2, ...}``` とも書ける
+    - パイプ記号は要素の追加の時には使えない
+- 削除 ```Map.delete(map, key)```, ```Map.drop(map, key_list)```
+  - 存在しないキーを指定した場合は元のマップを返す（Elixir 実践ガイドより）
+- 結合 ```Map.merge(map1, map2)```
+- マップであるかどうかを調べる ```is_map(term)```
+- キーを持つか調べる ```is_map_key(map, key)```
+- キーのリスト ```Map.keys(map)```
+- 値のリスト ```Map.values(map)```
