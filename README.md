@@ -358,3 +358,64 @@ end
 - シンタックスシュガー ```if hoge, do: fuga, else: piyo```
 - ```do:``` の後にはスペースを入れる
 - 最も外側の関数に対してバインドされる
+
+### 例外
+
+- 基本的には戻り値で条件分岐すれば例外を書く必要はない
+
+#### raise
+
+- 明示的にエラーを発生させる
+- ```raise/1``` は引数にメッセージをつける
+  - 発生するのは ```RuntimeError``` のみ
+- ```raise/2``` はエラーとメッセージをつける
+- 例
+
+``` elixir
+defmodule OriginaErr do
+  defexception message: "default"
+end
+
+raise OriginalErr, message: "custom"
+```
+
+#### try / rescue
+
+- エラーを補足する
+- 例
+
+``` elixir
+try do
+  raise "oops"
+rescue
+  e in RuntimeError -> e
+end
+# %RuntimeError{message: "oops"}
+```
+
+#### try / catch
+
+- ```throw``` で値を投げる
+- 基本使わない
+- 例
+
+``` elixir
+try do
+  for x <- 0..10 do
+    if x == 5, do: throw(x)
+    IO.puts(x)
+  end
+catch
+  x -> "Caught: #{x}"
+end
+```
+
+#### after
+
+- try の直後に必ず実行する処理
+
+#### exit
+
+- プロセスが死んだときに送る
+- 単純なプログラムで書くことは少ない
+  - ```spawn_link``` のような処理が出てきたときに思い出す
