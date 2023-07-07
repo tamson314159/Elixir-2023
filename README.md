@@ -294,3 +294,67 @@ func.(0)
   - 元のリストを他で参照しているコードに影響を与えない
 - コピーを作成することで非効率になることはない（原理は割愛）
 - 自主的に試してみた (Day2_Section2/immutability.exs)
+
+## Day2 Section2
+
+### 制御構造
+
+#### if
+
+- ```if 条件式 do 処理 end``` の形
+- 条件式が true の場合 end まで実行する
+
+#### if ･ else
+
+- ```if 条件式 do 処理1 else 処理2 end``` の形
+- 条件式が true の場合、処理1を実行する
+- 条件式が false の場合、処理2を実行する
+
+#### unless
+
+- if の逆
+
+#### unless ･ else
+
+- if ･ else の逆
+
+#### case
+
+- 以下の形
+
+``` elixir
+case {1, 2, 3} do
+  {4, 5, 6} -> "No match"
+  {1, x, 3} -> "Match"
+  _ -> "_ match all conditions"
+end
+```
+
+- 条件にマッチするまで値を比較する
+- 事前に束縛した変数と比較したいときは ```^``` を変数の前につける
+
+#### Guard 節
+
+- 引数によって処理を分ける
+- case 文中で ```パターン when 条件式 -> 処理``` の形
+
+#### cond
+
+- 最初にマッチするものを探す
+- 以下の形
+
+``` elixir
+cond do
+  2 + 2 == 5 -> "First,not true"
+  2 * 2 == 3 -> "Second,false"
+  1 + 1 == 2 -> "Third,true!!"
+end
+```
+
+- どれにもマッチしない場合エラー
+
+#### do / end ブロック
+
+- シンタックスシュガー ```if hoge, do: fuga, else: piyo```
+- ```do:``` の後にはスペースを入れる
+- 最も外側の関数に対してバインドされる
