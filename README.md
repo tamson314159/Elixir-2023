@@ -126,3 +126,19 @@ x = add.(1, 1)
 
 - fn で始まり end で終わる
 - ドット(.) は関数の呼び出しを意味する
+
+### 名前付き関数
+
+- def で始まり end で終わる
+- 原則小文字のアルファベットで始める
+- 例
+
+``` elixir
+defmodule Math do
+  def calc(x, y) do
+    x * 3 + y
+  end
+end
+```
+
+- defmodule については次項で解説
