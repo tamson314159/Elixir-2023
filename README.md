@@ -164,3 +164,24 @@ end
 iex> (fn a, b -> a * b end).(3,5)
 15
 ```
+
+### キャプチャ演算子
+
+- named function を named function のように扱う
+- ```&``` で表現する
+- 例1
+
+``` elixir
+f = &Math.calc/2
+f.(1, 3)
+
+func = &Math.calc(&1, &2)
+func.(1, 3)
+```
+
+- 例2
+
+``` elixir
+func = &([&1 | [1, 2, 3]])
+func.(0)
+```
