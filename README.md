@@ -695,3 +695,12 @@ end
   - ```def f([]), do: []```
   - ```def f([[1, fuga] | tail]), do: ([[1, fuga] | f(tail)])```
   - ```def f([_ | tail]), do: f(tail)```
+
+## Day3 Section3
+
+### バイナリと文字列
+
+#### キャラリスト
+
+- printable character のみを含むリストは iex が勝手にエンコーディングする
+- エンコーディングしてほしくないときは印字可能文字以外をリストに追加する方法がある
