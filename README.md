@@ -634,3 +634,11 @@ Enum.map_every([1, 2, 3, 4, 5], 2, fn x -> x + 10000 end)
 
 - ```Enum.map_join/3``` は ```Enum.map/2``` の後に ```Enum.join/2``` を行う
 - それぞれで処理するよりまとめた関数で処理する方が高速
+
+## Day3 Section2
+
+### リストのヘッドとテール
+
+- リストの先頭が head 2番目以降が tail
+- head と tail はそれぞれ hd/1 と tl/1 で取得できる
+- パターンマッチでも取得できる ```[head | tail] = list```
