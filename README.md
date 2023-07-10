@@ -650,4 +650,48 @@ Enum.map_every([1, 2, 3, 4, 5], 2, fn x -> x + 10000 end)
 
 - リストの先頭が head 2番目以降が tail
 - head と tail はそれぞれ hd/1 と tl/1 で取得できる
-- パターンマッチでも取得できる ```[head | tail] = list```
+
+### パターンマッチを使ったヘッドとテールの取得
+
+- パターンマッチでも head と tail が取得できる ```[head | tail] = list```
+
+### 再起処理とは
+
+- 再起処理とは関数の中で自身の関数を呼び出すこと
+- 無限ループさせないため、終了条件プログラムしておく
+
+### リストの再帰的構造
+
+- 例
+
+``` elixir
+def f([]), do: 終了処理
+def f([head | tail]) do
+  head2 = head への処理
+  hoge(f, head2, tail)
+  # hoge は足し算とか tail への head1 の append など
+end
+```
+
+### map 関数の作成
+
+- map 関数は前節の例で以下のようにしたもの
+  - ```head2 = func(head)```
+  - ```def hoge(f, head2, tail), do: [head2 | map(tail, func)]```
+
+### 再起中の値の保持
+
+- sum 関数は前節の例で以下のようにしたもの
+  - ```head2 = head + total```
+  - ```def hoge(head2, tail), do: sum(tail, head2)```
+
+### より複雑なリストのパターン
+
+- 複数の要素を head としてマッチできる ```[head1, head2, ... | tail]```
+
+### 特定リストの抽出
+
+- 例：```[[hoge1, fuga1], [hoge2, fuga2], ...]``` から ```hoge = 1``` のリストを取得する
+  - ```def f([]), do: []```
+  - ```def f([[1, fuga] | tail]), do: ([[1, fuga] | f(tail)])```
+  - ```def f([_ | tail]), do: f(tail)```
