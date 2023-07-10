@@ -643,3 +643,11 @@ Enum.map_every([1, 2, 3, 4, 5], 2, fn x -> x + 10000 end)
 - Stream は即時に計算するのではなく Stream 構造体を返す
 - Stream 構造体は将来適用される関数を保持している
 - ```Enum.take(stream, n)``` 等で値を取得できる
+
+## Day3 Section2
+
+### リストのヘッドとテール
+
+- リストの先頭が head 2番目以降が tail
+- head と tail はそれぞれ hd/1 と tl/1 で取得できる
+- パターンマッチでも取得できる ```[head | tail] = list```
