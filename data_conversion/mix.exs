@@ -22,7 +22,8 @@ defmodule DataConversion.MixProject do
   defp deps do
     [
       {:httpoison, "~> 2.0"},
-      {:jason, "~> 1.4"}
+      {:jason, "~> 1.4"},
+      {:csv, "~> 3.0"}
     ]
   end
 end
