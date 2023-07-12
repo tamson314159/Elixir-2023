@@ -1,9 +1,9 @@
 defmodule DataConversion do
-  def json_get(end_point_api) do
+  def json_get(end_point_api \\ "https://api.data.metro.tokyo.lg.jp/v1//WifiAccessPoint") do
     [data, _] = end_point_api
     |> HTTPoison.get!
     |> Map.get(:body)
-    |> Json.decode!
+    |> Jason.decode!
 
     data
   end
@@ -25,5 +25,19 @@ defmodule DataConversion do
 
   def gets(data) do
     Enum.map(data, &get(&1))
+  end
+
+  def create_csv(map_list, filename \\ "new.csv") do
+    data = CSV.encode(map_list, headers: true)
+      |> Enum.map(& &1)
+      |> Enum.join()
+
+    File.write!(filename, data)
+  end
+
+  def read_csv(path) do
+    file = File.stream!(path)
+    CSV.decode!(file, headers: true)
+    |> Enum.map(& &1)
   end
 end
