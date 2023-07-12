@@ -96,6 +96,84 @@ defmodule Day3Work do
     Enum.zip(list, tail)
   end
 
-  def question07() do
+  # def question07() do
+  def question07(s1 \\ "paraparaparadise", s2 \\ "paragraph") do
+    x =
+      # "paraparaparadise"
+      s1
+      |> String.codepoints()
+      |> bi_gram()
+      |> IO.inspect(label: "x")
+      |> MapSet.new()
+
+    y =
+      # "paragraph"
+      s2
+      |> String.codepoints()
+      |> bi_gram()
+      |> IO.inspect(label: "y")
+      |> MapSet.new()
+
+    IO.puts("和集合")
+    IO.inspect(MapSet.union(x, y))
+
+    IO.puts("積集合")
+    IO.inspect(MapSet.intersection(x, y))
+
+    IO.puts("差集合")
+    IO.inspect(MapSet.difference(x, y))
+
+    z = MapSet.new([{"s", "e"}])
+
+    IO.puts("x に se は含まれているか？")
+    IO.puts(MapSet.subset?(z, x))
+
+    IO.puts("y に se は含まれているか？")
+    IO.puts(MapSet.subset?(z, y))
+
+    :ok
+  end
+
+  # def question08(x, y, z) do
+  def question08(x \\ 12, y \\ "気温", z \\ 22.4) do
+    # Windows 環境だと日本語入力はできない
+    IO.puts("#{x}時の#{y}は#{z}")
+    :ok
+  end
+
+  def question09(s \\ "the quick brown fox jumps over the lazy dog") do
+    String.codepoints(s)
+    |> Enum.map(&translate(&1))
+    |> Enum.join()
+    |> IO.puts()
+  end
+
+  defp translate(char) do
+    if char == String.upcase(char) do
+      char
+    else
+      # 自力ではいいコードが書けなかった
+      <<n>> = char
+      <<219 - n>>
+    end
+  end
+
+  def question10(s \\ "I couldn’t believe that I could actually understand what I was reading : the phenomenal power of the human mind .") do
+    String.split(s)
+    |> Enum.map(&randomize(&1))
+    |> Enum.join(" ")
+    |> IO.inspect()
+    :ok
+  end
+
+  defp randomize(word) do
+    if String.length(word) <= 4 do
+      word
+    else
+      [top | middle] = String.codepoints(word)
+      [bottom | middle] = Enum.reverse(middle)
+
+      Enum.join([top] ++ Enum.shuffle(middle) ++ [bottom])
+    end
   end
 end
