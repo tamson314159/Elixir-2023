@@ -1,5 +1,6 @@
 defmodule DataConversion do
   def json_get(end_point_api \\ "https://api.data.metro.tokyo.lg.jp/v1//WifiAccessPoint") do
+  # URL は関数側ではなく seeds.exs 側に書く
     [data, _] = end_point_api
     |> HTTPoison.get!
     |> Map.get(:body)
