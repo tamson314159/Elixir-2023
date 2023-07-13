@@ -856,3 +856,11 @@ end
 - 並行性と信頼性が特徴
 - 並行性は BEAM プロセスによって実現される
 - Erlang のプロセスはすべの CPU 上で動き、オーバーヘッドが小さい
+
+## Ecto
+
+- mix プロジェクトは ```--sup``` オプションをつけて作成する
+- ```ecto_sql``` と ```postgrex``` を追加する
+- Ecto のセットアップ ```mix ecto.gen.repo -r Hoge.Repo```
+- データベースのセットアップ ```mix ecto.create```
+- migration の作成 ```mix ecto.gen.migration create_hoge```
