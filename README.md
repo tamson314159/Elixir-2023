@@ -865,3 +865,4 @@ end
 - データベースのセットアップ ```mix ecto.create```
 - migration の作成 ```mix ecto.gen.migration create_hoge```
 - migration ファイルの実行　```mix ecto.migrate```
+- DB の削除 ```mix ecto.drop```
