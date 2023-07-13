@@ -866,3 +866,10 @@ end
 - migration の作成 ```mix ecto.gen.migration create_hoge```
 - migration ファイルの実行　```mix ecto.migrate```
 - DB の削除 ```mix ecto.drop```
+
+### Repo.all
+
+- 指定したデータのすべてをスキーマのリストで取得する
+- 第一引数に schema かクエリを入れる
+  - クエリについては後日学ぶ
+- 第二引数はオプションでタイムアウトの時間（ミリ秒）等が指定できる
