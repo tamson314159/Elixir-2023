@@ -896,10 +896,18 @@ end
 
 ### Repo.update
 
-- DB の更新
+- DB のデータ更新
 - 第一引数にチェンジセット
 - 検証または制約エラーの場合 ```{:error, chageset}```
 - スキーマに id が存在しない場合 ```Ecto.NoPrimaryKeyValueError```
 - DB に存在しない id を指定した場合 ```Ecto.StaleEntryError```
 - ```update!``` は構造体のみを返す
   - 検証または制約でエラーがあった場合、例外が発生する
+
+### Repo.delete
+
+- DB のデータ削除
+- 第一引数に削除したいデータのスキーマまたはチェンジセット
+- 検証または制約エラーの場合 ```{:error, chageset}```
+- 例外は ```update``` と同様
+- ```delete!``` は ```update!``` と同様
