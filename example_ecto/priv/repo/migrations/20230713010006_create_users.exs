@@ -6,8 +6,11 @@ defmodule ExampleEcto.Repo.Migrations.CreateUsers do
       add :first_name, :string, null: false
       add :last_name, :string, null: false
       add :age, :integer
+      add :email, :string, null: false
 
       timestamps()
     end
+
+    create unique_index(:users, [:email])
   end
 end
