@@ -893,3 +893,13 @@ end
 - 第一引数にスキーマまたはチェンジセット
 - 戻り値はステータスと構造体のタプル
   - ```insert!``` は構造体のみ
+
+### Repo.update
+
+- DB の更新
+- 第一引数にチェンジセット
+- 検証または制約エラーの場合 ```{:error, chageset}```
+- スキーマに id が存在しない場合 ```Ecto.NoPrimaryKeyValueError```
+- DB に存在しない id を指定した場合 ```Ecto.StaleEntryError```
+- ```update!``` は構造体のみを返す
+  - 検証または制約でエラーがあった場合、例外が発生する
