@@ -911,3 +911,20 @@ end
 - 検証または制約エラーの場合 ```{:error, chageset}```
 - 例外は ```update``` と同様
 - ```delete!``` は ```update!``` と同様
+
+# Ecto.Query
+
+- ```from``` 関数と ```where``` マクロの2通りの方法でクエリを発効できる
+- クエリの作り方の例 ```from(u in スキーマ, where: hoge, select: fuga)```
+  - 発効するときは ```Repo.all(query)```
+- 攻撃対策のため nil 比較には ```is_nil/1``` を使う
+- ```in``` のあとにクエリをとることで、クエリを組み合わせることができる
+- マクロは操作ごとに ```[]``` でバインドする
+- 例：
+
+``` elixir
+スキーマ
+|> where([u], hoge)
+|> select([u], fuga)
+|> Repo.all
+```
