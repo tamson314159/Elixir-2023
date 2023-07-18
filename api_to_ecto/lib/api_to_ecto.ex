@@ -43,7 +43,7 @@ defmodule ApiToEcto do
   defp map_to_place(map) do
     %ApiToEcto.Place{
       name: map["大字町丁目コード"],
-      address: map["都道府県名"] <> map["市区町村名"],
+      address: map["都道府県名"] <> map["市区町村名"] <> map["大字町丁目名"],
       lat: String.to_float(map["緯度"]),
       lon: String.to_float(map["経度"])
     }
