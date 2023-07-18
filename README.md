@@ -912,7 +912,7 @@ end
 - 例外は ```update``` と同様
 - ```delete!``` は ```update!``` と同様
 
-# Ecto.Query
+### Ecto.Query
 
 - ```from``` 関数と ```where``` マクロの2通りの方法でクエリを発効できる
 - クエリの作り方の例 ```from(u in スキーマ, where: hoge, select: fuga)```
@@ -928,3 +928,18 @@ end
 |> select([u], fuga)
 |> Repo.all
 ```
+
+### association
+
+#### 1対1
+
+- migration ファイルに ```add カラム名, references(参照先のテーブル名), オプション``` で外部キーを追加する
+- 子テーブルのスキーマに ```belongs_to キー名, 親のスキーマ名, オプション```、親テーブルのスキーマに ```has_one キー名, 子のスキーマ名, オプション``` を追加する
+
+#### 1対多
+
+- ```has_one``` を ```has_many``` に変える
+
+#### 多対多
+
+- ```has_manyu``` に ```through``` オプションをつける
