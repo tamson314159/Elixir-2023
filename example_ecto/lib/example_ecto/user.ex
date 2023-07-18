@@ -15,6 +15,7 @@ defmodule ExampleEcto.User do
     user
     |> cast(params, [:first_name, :last_name, :age, :email])
     |> validate_required([:first_name, :last_name])
+    |> validate_last_name()
     |> validate_email()
   end
 
@@ -31,5 +32,15 @@ defmodule ExampleEcto.User do
     |> cast(params, [:first_name, :last_name, :age])
     |> validate_required(:first_name, message: "Please enter your first name.")
     |> validate_required(:last_name, message: "Please enter your last name.")
+  end
+
+  def validate_last_name(cs) do
+    last_name = get_field(cs, :last_name)
+
+    if last_name in ["Sato", "Suzuki", "Takahashi", "Tanaka", "Ito"] do
+      cs
+    else
+      add_error(cs, :last_name, "Please use tha last name specified.")
+    end
   end
 end
