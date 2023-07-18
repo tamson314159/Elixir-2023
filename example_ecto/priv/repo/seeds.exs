@@ -4,7 +4,14 @@ alias ExampleEcto.User
 users = [
   {"Yamada", "Taro", 20},
   {"Sato", "Hanako", 18},
-  {"Suzuki", "Jiro", 23}
+  {"Suzuki", "Jiro", 23},
+  {"Sasaki", "Mami", 22},
+  {"Ito", "Aki", 19},
+  {"Yamaguti", "Atusi", 19},
+  {"Sakamoto", "Hajime", 24},
+  {"Akimoto", "Satosi", 17},
+  # Satoshi ではない
+  {"Makimoto", "Riyu", nil}
 ]
 
 for {last_name, first_name, age} <- users do
