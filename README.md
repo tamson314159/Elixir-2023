@@ -943,3 +943,17 @@ end
 #### 多対多
 
 - ```has_manyu``` に ```through``` オプションをつける
+
+### transaction
+
+- 一連の処理をまとめる
+- 以下の流れで行う
+  1. ```Ecto.Multi``` 構造体を作成する ```Multi.new()```
+  1. ```Ecto.Multi``` 構造体に処理を追加する ```Multi.insert(Multi 構造体, 処理を識別する名前, changeset or schema or function (戻り値は cs or schema), オプション)```
+  1. 実際に渡される値を見る場合は ```Multi.inspect``` を通す
+  1. ```Repo.transaction``` で実行する
+
+- ```Multi.update``` と ```Multi.delete``` も使い方は同じ
+- ```Multi.run``` で ```Multi``` 内で実行する機能を追加する
+  - 第3引数の関数は ```Repo``` と ```Multi``` を受け取り ```{:ok, hoge}``` または ```{:error, fuga}``` を返す
+- ```Multi.delete_all``` は第3引数にクエリまたはクエリを返す関数を渡す
