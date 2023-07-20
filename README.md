@@ -976,3 +976,7 @@ end
 ### preload
 
 - ```Repo.preload``` を行う
+
+### subquery
+
+- クエリをサブクエリにする
