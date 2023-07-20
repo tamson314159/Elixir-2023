@@ -27,4 +27,13 @@ defmodule EctoAssocQuery.Core do
     |> Enum.sort()
     |> Enum.uniq()
   end
+
+  def get_users() do
+    query =
+      from(u in User,
+        left_join: au in assoc(u, :active_user)
+      )
+
+    Repo.all(query)
+  end
 end
