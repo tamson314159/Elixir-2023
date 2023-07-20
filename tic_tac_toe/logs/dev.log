@@ -17,3 +17,133 @@
 15:05:58.737 [info] The game agent started.
 15:05:58.739 [info] The console started.
 15:05:58.748 [debug] state: %{}
+15:33:43.095 [info] The game agent started.
+15:33:43.098 [info] The console started.
+15:33:43.101 [debug] state: %{}
+15:37:42.807 [info] The game agent started.
+15:37:42.812 [info] The console started.
+15:37:42.821 [debug] state: %{}
+15:38:51.260 [info] The game agent started.
+15:38:51.263 [info] The console started.
+15:38:51.276 [debug] state: %{}
+15:46:42.826 [info] The game agent started.
+15:46:42.829 [info] The console started.
+15:46:42.838 [debug] state: %{}
+16:09:43.624 [info] The game agent started.
+16:09:43.627 [info] The console started.
+16:09:43.635 [debug] state: %{}
+16:09:47.557 [error] GenServer TicTacToe.Game terminating
+** (KeyError) key :ture not found
+    (tic_tac_toe 0.1.0) lib/tic_tac_toe/game.ex:29: anonymous fn/1 in TicTacToe.Game.put_mark/2
+    (elixir 1.15.2) lib/agent/server.ex:23: Agent.Server.handle_call/3
+    (stdlib 4.3.1.2) gen_server.erl:1149: :gen_server.try_handle_call/4
+    (stdlib 4.3.1.2) gen_server.erl:1178: :gen_server.handle_msg/6
+    (stdlib 4.3.1.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+Last message (from TicTacToe.Console): {:update, #Function<2.50549837/1 in TicTacToe.Game.put_mark/2>}
+State: %{grid: [[:b, :b, :b], [:b, :b, :b], [:b, :b, :b]], turn: :o}
+Client TicTacToe.Console is alive
+
+    (stdlib 4.3.1.2) gen.erl:256: :gen.do_call/4
+    (elixir 1.15.2) lib/gen_server.ex:1071: GenServer.call/3
+    (tic_tac_toe 0.1.0) lib/tic_tac_toe/console.ex:32: TicTacToe.Console.handle_info/2
+    (stdlib 4.3.1.2) gen_server.erl:1123: :gen_server.try_dispatch/4
+    (stdlib 4.3.1.2) gen_server.erl:1200: :gen_server.handle_msg/6
+    (stdlib 4.3.1.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+16:09:47.618 [info] The game agent started.
+16:09:47.618 [error] GenServer TicTacToe.Console terminating
+** (stop) exited in: GenServer.call(TicTacToe.Game, {:update, #Function<2.50549837/1 in TicTacToe.Game.put_mark/2>}, 5000)
+    ** (EXIT) an exception was raised:
+        ** (KeyError) key :ture not found
+            (tic_tac_toe 0.1.0) lib/tic_tac_toe/game.ex:29: anonymous fn/1 in TicTacToe.Game.put_mark/2
+            (elixir 1.15.2) lib/agent/server.ex:23: Agent.Server.handle_call/3
+            (stdlib 4.3.1.2) gen_server.erl:1149: :gen_server.try_handle_call/4
+            (stdlib 4.3.1.2) gen_server.erl:1178: :gen_server.handle_msg/6
+            (stdlib 4.3.1.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+    (elixir 1.15.2) lib/gen_server.ex:1074: GenServer.call/3
+    (tic_tac_toe 0.1.0) lib/tic_tac_toe/console.ex:32: TicTacToe.Console.handle_info/2
+    (stdlib 4.3.1.2) gen_server.erl:1123: :gen_server.try_dispatch/4
+    (stdlib 4.3.1.2) gen_server.erl:1200: :gen_server.handle_msg/6
+    (stdlib 4.3.1.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+Last message: :process_command
+State: %{}
+16:09:47.626 [info] The console started.
+16:09:47.626 [debug] state: %{}
+16:13:41.867 [error] GenServer TicTacToe.Game terminating
+** (KeyError) key :ture not found
+    (tic_tac_toe 0.1.0) lib/tic_tac_toe/game.ex:29: anonymous fn/1 in TicTacToe.Game.put_mark/2
+    (elixir 1.15.2) lib/agent/server.ex:23: Agent.Server.handle_call/3
+    (stdlib 4.3.1.2) gen_server.erl:1149: :gen_server.try_handle_call/4
+    (stdlib 4.3.1.2) gen_server.erl:1178: :gen_server.handle_msg/6
+    (stdlib 4.3.1.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+Last message (from TicTacToe.Console): {:update, #Function<2.50549837/1 in TicTacToe.Game.put_mark/2>}
+State: %{grid: [[:b, :b, :b], [:b, :b, :b], [:b, :b, :b]], turn: :o}
+Client TicTacToe.Console is alive
+
+    (stdlib 4.3.1.2) gen.erl:256: :gen.do_call/4
+    (elixir 1.15.2) lib/gen_server.ex:1071: GenServer.call/3
+    (tic_tac_toe 0.1.0) lib/tic_tac_toe/console.ex:32: TicTacToe.Console.handle_info/2
+    (stdlib 4.3.1.2) gen_server.erl:1123: :gen_server.try_dispatch/4
+    (stdlib 4.3.1.2) gen_server.erl:1200: :gen_server.handle_msg/6
+    (stdlib 4.3.1.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+16:13:41.868 [info] The game agent started.
+16:13:41.868 [error] GenServer TicTacToe.Console terminating
+** (stop) exited in: GenServer.call(TicTacToe.Game, {:update, #Function<2.50549837/1 in TicTacToe.Game.put_mark/2>}, 5000)
+    ** (EXIT) an exception was raised:
+        ** (KeyError) key :ture not found
+            (tic_tac_toe 0.1.0) lib/tic_tac_toe/game.ex:29: anonymous fn/1 in TicTacToe.Game.put_mark/2
+            (elixir 1.15.2) lib/agent/server.ex:23: Agent.Server.handle_call/3
+            (stdlib 4.3.1.2) gen_server.erl:1149: :gen_server.try_handle_call/4
+            (stdlib 4.3.1.2) gen_server.erl:1178: :gen_server.handle_msg/6
+            (stdlib 4.3.1.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+    (elixir 1.15.2) lib/gen_server.ex:1074: GenServer.call/3
+    (tic_tac_toe 0.1.0) lib/tic_tac_toe/console.ex:32: TicTacToe.Console.handle_info/2
+    (stdlib 4.3.1.2) gen_server.erl:1123: :gen_server.try_dispatch/4
+    (stdlib 4.3.1.2) gen_server.erl:1200: :gen_server.handle_msg/6
+    (stdlib 4.3.1.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+Last message: :process_command
+State: %{}
+16:13:41.869 [info] The console started.
+16:13:41.869 [debug] state: %{}
+16:15:47.281 [info] The game agent started.
+16:15:47.283 [info] The console started.
+16:15:47.292 [debug] state: %{}
+16:20:55.159 [info] The game agent started.
+16:20:55.161 [info] The console started.
+16:20:55.170 [debug] state: %{}
+16:52:44.474 [info] The game agent started.
+16:52:44.476 [info] The console started.
+16:52:44.486 [debug] state: %{}
+16:52:49.111 [error] GenServer TicTacToe.Console terminating
+** (UndefinedFunctionError) function TicTacToe.Grid.put_mark/2 is undefined or private
+    (tic_tac_toe 0.1.0) TicTacToe.Grid.put_mark(1, 1)
+    (tic_tac_toe 0.1.0) lib/tic_tac_toe/console.ex:32: TicTacToe.Console.handle_info/2
+    (stdlib 4.3.1.2) gen_server.erl:1123: :gen_server.try_dispatch/4
+    (stdlib 4.3.1.2) gen_server.erl:1200: :gen_server.handle_msg/6
+    (stdlib 4.3.1.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+Last message: :process_command
+State: %{}
+16:52:49.144 [info] The console started.
+16:52:49.144 [debug] state: %{}
+16:53:30.047 [info] The game agent started.
+16:53:30.049 [info] The console started.
+16:53:30.059 [debug] state: %{}
+16:54:11.292 [error] GenServer TicTacToe.Console terminating
+** (UndefinedFunctionError) function TicTacToe.Grid.put_mark/2 is undefined or private
+    (tic_tac_toe 0.1.0) TicTacToe.Grid.put_mark(1, 1)
+    (tic_tac_toe 0.1.0) lib/tic_tac_toe/console.ex:32: TicTacToe.Console.handle_info/2
+    (stdlib 4.3.1.2) gen_server.erl:1123: :gen_server.try_dispatch/4
+    (stdlib 4.3.1.2) gen_server.erl:1200: :gen_server.handle_msg/6
+    (stdlib 4.3.1.2) proc_lib.erl:240: :proc_lib.init_p_do_apply/3
+Last message: :process_command
+State: %{}
+16:54:11.366 [info] The console started.
+16:54:11.366 [debug] state: %{}
+16:56:10.467 [info] The game agent started.
+16:56:10.470 [info] The console started.
+16:56:10.485 [debug] state: %{}
+17:12:43.116 [info] The game agent started.
+17:12:43.116 [info] The console started.
+17:12:43.134 [debug] state: %{}
+17:24:03.067 [info] The game agent started.
+17:24:03.067 [info] The console started.
+17:24:03.067 [debug] state: %{}
