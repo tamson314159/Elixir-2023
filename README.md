@@ -972,3 +972,7 @@ end
 ### left_join
 
 - 外部結合
+
+### preload
+
+- ```Repo.preload``` を行う

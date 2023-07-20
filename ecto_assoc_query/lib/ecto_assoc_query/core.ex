@@ -36,4 +36,15 @@ defmodule EctoAssocQuery.Core do
 
     Repo.all(query)
   end
+
+  def get_user(user_id) do
+    query =
+      from(u in User,
+        join: au in assoc(u, :active_user),
+        where: u.id == ^user_id,
+        preload: :musics
+      )
+
+    Repo.one(query)
+  end
 end
