@@ -147,3 +147,24 @@ State: %{}
 17:24:03.067 [info] The game agent started.
 17:24:03.067 [info] The console started.
 17:24:03.067 [debug] state: %{}
+09:44:58.536 [info] The game agent started.
+09:44:58.540 [info] The console started.
+09:44:58.551 [debug] state: %{}
+09:45:31.099 [info] The game agent started.
+09:45:31.102 [info] The console started.
+09:45:31.110 [debug] state: %{}
+09:46:16.207 [info] The game agent started.
+09:46:16.211 [info] The console started.
+09:46:16.218 [debug] state: %{}
+10:06:09.418 [info] The game agent started.
+10:06:09.422 [info] The console started.
+10:06:09.445 [debug] state: %{mode: :human_vs_computer}
+10:06:53.340 [info] The game agent started.
+10:06:53.343 [info] The console started.
+10:06:53.358 [debug] state: %{mode: :human_vs_computer}
+10:09:07.513 [info] The game agent started.
+10:09:07.518 [info] The console started.
+10:09:07.533 [debug] state: %{mode: :computer_vs_computer}
+10:09:16.895 [info] The game agent started.
+10:09:16.898 [info] The console started.
+10:09:16.912 [debug] state: %{mode: :computer_vs_computer}
