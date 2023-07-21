@@ -980,3 +980,20 @@ end
 ### subquery
 
 - クエリをサブクエリにする
+
+## Phoenix Framework とは
+
+- Elixir の Web アプリケーションフレームワーク
+
+### MVC
+
+- model
+- view
+- controller
+
+### CURD
+
+- create
+- read
+- update
+- delete
