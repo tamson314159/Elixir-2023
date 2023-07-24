@@ -40,3 +40,32 @@
 ### 4-3
 
 3
+
+## 第5章 Elixir の基礎 (3)
+
+### 5-1
+
+1
+
+### 5-2
+
+{"alice", 0}
+
+### 5-3
+
+- ア. ->
+- イ. end
+
+### 5-4
+
+- ア. defmodule
+- イ. def
+
+### 5-5
+
+ch05/string_utility.exs
+
+### 5-6
+
+- ア. String.to_integer()
+- イ. abs()
