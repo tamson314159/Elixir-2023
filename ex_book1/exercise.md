@@ -105,3 +105,21 @@ false
 ### 7-2
 
 - ア. alias MyApp.MyMod
+
+## 第8章 関数 (1)
+
+### 8-1
+
+- ア. -> a - b
+- イ. subtract.
+
+### 8-2
+
+- ア. quote
+  - apply
+- イ. connect
+  - :connect
+
+### 8-3
+
+def connect(a, b), do: a <> "-" <> b
