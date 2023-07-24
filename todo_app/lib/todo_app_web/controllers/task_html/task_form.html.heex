@@ -1,0 +1,7 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.input field={f[:title]} type = "text" label="Title"/>
+  <.input field={f[:date]} type = "date" label="Date"/>
+  <:actions>
+    <.button>Save Task</.button>
+  </:actions>
+</.simple_form>
