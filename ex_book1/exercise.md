@@ -69,3 +69,25 @@ ch05/string_utility.exs
 
 - ア. String.to_integer()
 - イ. abs()
+
+## 第6章 Elixir の基礎 (4)
+
+### 6-1
+
+true
+
+### 6-2
+
+false
+
+- "A": and, && の方が or, || より優先度が高い
+
+### 6-3
+
+- ア. String
+- イ. :ok
+
+### 6-4
+
+- ア. <-
+- イ. "(#{name})"
