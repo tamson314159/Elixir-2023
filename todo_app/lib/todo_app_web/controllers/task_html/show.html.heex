@@ -1,0 +1,15 @@
+<.header>
+  Task <%= @task.id %>
+  <:actions>
+    <.link href={~p"/tasks/#{@task}/edit"}>
+      <.button>Edit Task</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Title"><%= @task.title %></:item>
+  <:item title="Date"><%= @task.date %></:item>
+</.list>
+
+<.back navigate={~p"/tasks"}>Back to tasks</.back>

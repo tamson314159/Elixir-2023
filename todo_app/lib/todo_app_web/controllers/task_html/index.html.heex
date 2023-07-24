@@ -3,9 +3,25 @@
   <:subtitle>
     It shows tasks that have not yet been completed.
   </:subtitle>
+  <:actions>
+    <.link href={~p"/tasks/new"}>
+      <.button>New Task</.button>
+    </.link>
+  </:actions>
 </.header>
 
 <.table id="tasks" rows={@tasks}>
   <:col :let={task} label="Title"><%= task.title %></:col>
   <:col :let={task} label="Date"><%= task.date %></:col>
+  <:action :let={task}>
+    <.link navigate={~p"/tasks/#{task}"}>Show</.link>
+  </:action>
+  <:action :let={task}>
+    <.link navigate={~p"/tasks/#{task}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={task}>
+    <.link href={~p"/tasks/#{task}"} method="delete" data-confirm="Do you want to delete it?">
+      Delete
+    </.link>
+  </:action>
 </.table>

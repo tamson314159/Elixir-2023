@@ -20,7 +20,15 @@ defmodule TodoAppWeb.Router do
     get "/", PageController, :home
     get "/hello", HelloController, :hello
 
-    get "/tasks", TaskController, :index
+    # get "/tasks", TaskController, :index
+    # get "/tasks/new", TaskController, :new
+    # post "/tasks", TaskController, :create
+    # get "/tasks/:id", TaskController, :show
+    # get "/tasks/:id/edit", TaskController, :edit
+    # patch "/tasks/:id", TaskController, :update
+    # put "/tasks/:id", TaskController, :update
+    # delete "/tasks/:id", TaskController, :delete
+    resources "/tasks", TaskController
   end
 
   # Other scopes may use custom stacks.
