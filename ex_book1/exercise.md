@@ -371,3 +371,10 @@ ch20/multiple_clauses4.exs
 ### 21-4
 
 - ア. {[{spare, entry} | pairs], entry}
+
+## 第22章 エラー処理
+
+### 22-1
+
+- ア. catch
+- イ. rescue
