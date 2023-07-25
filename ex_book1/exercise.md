@@ -145,3 +145,20 @@ def connect(a, b), do: a <> "-" <> b
 2. fn x, y -> x * y end
 3. fn x -> rem(x, 10) end
 4. fn x -> {x, x + 1} end
+
+## 第10章 マクロの初歩と条件分岐
+
+### 10-1
+
+"many"
+
+### 10-2
+
+if len >= 3, do: :large, else: :small
+
+### 10-3
+
+- ア. len == 0 -> "zero"
+- イ. len == 1 -> "one"
+- ウ. len == 2 -> "two"
+- エ. true -> "many"
