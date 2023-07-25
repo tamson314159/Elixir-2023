@@ -345,3 +345,29 @@ ch19/auth.exs
 ### 20-1
 
 ch20/exercise1.exs
+
+### 20-2
+
+ch20/math.exs
+
+### 20-3
+
+ch20/multiple_clauses4.exs
+
+## 第21章 reduce 関数
+
+### 21-1
+
+30
+
+### 21-2
+
+"AABBZ"
+
+### 21-3
+
+"Bob/Carol/Alice/Eve"
+
+### 21-4
+
+- ア. {[{spare, entry} | pairs], entry}
