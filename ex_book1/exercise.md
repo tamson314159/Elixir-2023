@@ -286,3 +286,20 @@ true
 ### 16-4
 
 ch16/my_mod.exs
+
+## 第17章 Enum モジュール
+
+### 17-1
+
+- ア. filter
+- イ. uniq
+- ウ. sort
+
+### 17-2
+
+ch17/my_mod.ex
+
+### 17-3
+
+- ア. all?
+- イ. length
