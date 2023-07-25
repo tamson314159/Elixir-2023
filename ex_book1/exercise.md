@@ -378,3 +378,13 @@ ch20/multiple_clauses4.exs
 
 - ア. catch
 - イ. rescue
+
+## 第23章 ExUnit
+
+### 23-1
+
+ch23/my_mod.ex と ch23/my_mod_test.exs
+
+### 23-2
+
+ch23/my_mod.ex と ch23/my_mod_test.exs
