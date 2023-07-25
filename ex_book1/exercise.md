@@ -162,3 +162,12 @@ if len >= 3, do: :large, else: :small
 - イ. len == 1 -> "one"
 - ウ. len == 2 -> "two"
 - エ. true -> "many"
+
+## 第11章 アトム
+
+### 11-1
+
+1. x
+2. x
+3. o
+4. x
