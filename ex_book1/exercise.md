@@ -388,3 +388,21 @@ ch23/my_mod.ex と ch23/my_mod_test.exs
 ### 23-2
 
 ch23/my_mod.ex と ch23/my_mod_test.exs
+
+## 第24章 Mix
+
+### 24-1
+
+ch24/adder/test/adder_test.exs
+
+### 24-2
+
+ch24/adder/lib/adder.ex
+
+### 24-3
+
+ch24/adder/test/adder_test.exs
+
+### 24-4
+
+ch24/adder/lib/mix/tasks/sum.ex
