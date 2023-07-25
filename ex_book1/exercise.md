@@ -318,3 +318,24 @@ ch17/my_mod.ex
 ### 18-3
 
 [{1, 3, 0, 0}, {0, 1, 1, 3}]
+
+## 第19章 case マクロと with マクロ
+
+### 19-1
+
+- ア. 0 -> "zero"
+- イ. 1 -> "one"
+- ウ. 2 -> "two"
+- エ. _ -> "many"
+
+### 19-2
+
+ch19/auth.exs
+
+### 19-3
+
+- ア. %{name: name, data: data}
+  - %{name: name, data: data} when is_binary(data)
+- イ. {i, ""}
+- ウ. nil
+  - _ -> nil
