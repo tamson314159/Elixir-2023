@@ -1,0 +1,51 @@
+<script src="http://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<%
+  money =
+    Enum.map(@money_by_categories, fn {_category, _color_code, money} -> money end)
+  balance = @sum_incomes - Enum.sum(money)
+  balance = if balance > 0, do: balance, else: 0
+  money_by_categories =
+    @money_by_categories
+    |> Enum.map(fn {category, color_code, money} ->
+        %{"category" => category, "color_code" => color_code, "money" => money}
+      end)
+    |> List.insert_at(-1, %{"category" => "残高", "color_code" => "#d3d3d3", "money" => balance})
+
+  categories =
+    money_by_categories
+    |> Enum.map(& &1["category"])
+    |> inspect()
+
+  color_code =
+    money_by_categories
+    |> Enum.map(& &1["color_code"])
+    |> inspect()
+
+  categories_money =
+    money_by_categories
+    |> Enum.map(& &1["money"])
+    |> inspect()
+%>
+
+<div id="categories" hidden><%= categories %></div>
+<div id="colorCode" hidden><%= color_code %></div>
+<div id="categoriesMoney" hidden><%= categories_money %></div>
+
+<.header>
+  Household account book <%= Calendar.strftime(@date, "%Y-%m") %>
+</.header>
+
+<div>
+  <canvas id="pieChart" class="max-w-md"></canvas>
+</div>
+
+<.table id="moneyByCategory" rows={money_by_categories}>
+  <:col :let={money_by_category} label="Catergory">
+    <%= money_by_category["category"] %>
+  </:col>
+
+  <:col :let={money_by_category} label="Total amount">
+    <%= money_by_category["money"] %>円
+  </:col>
+</.table>

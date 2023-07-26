@@ -998,9 +998,13 @@ end
 - update
 - delete
 
-# p シギル
+### p シギル
 
 - ルーターのパスを指定する
 - 間違ったパスを指定した時コンパイルエラーを出してくれる
 - ```~p"page/#{page.slug}``` ではなく ```~p"page/#{page}``` で参照できる
   - 参考：[Phoenix.VerifiedRoutes](https://hexdocs.pm/phoenix/Phoenix.VerifiedRoutes.html)
+
+## 家計簿アプリ
+
+- Enum.each は Enum.map とほぼ同じだが、戻り値が :ok
