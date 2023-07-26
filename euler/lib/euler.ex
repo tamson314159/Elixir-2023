@@ -26,4 +26,8 @@ defmodule Euler do
     [a, b | tail] = generate_fibonacci(n - 1)
     [a + b, a, b | tail]
   end
+
+  def problem003(n \\ 600851475143) do
+
+  end
 end
