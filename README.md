@@ -1008,3 +1008,24 @@ end
 ## 家計簿アプリ
 
 - Enum.each は Enum.map とほぼ同じだが、戻り値が :ok
+
+### DOM
+
+- Documetn Object Model
+- id で取得 ```document.getElementById("hoge")```
+- querySelecteor() ```document.querySelector(".class" or "#id")```
+  - 一番最初に見つけた要素が取得される
+- 子要素から取得するときは ```document``` の変わりに要素を指定する
+- ```querySelectorAll``` で全て
+- 子要素を取得するときは ```childr``` or ```childNodes```
+- 要素のテキストは ```textContent```
+  - 取得するときは右辺
+  - 変更するときは左辺
+
+### Char.js
+
+- グラフが作れる
+
+### 色の選択
+
+- html フォームで色の選択をするとき、デフォルトで ```color``` 属性が使える

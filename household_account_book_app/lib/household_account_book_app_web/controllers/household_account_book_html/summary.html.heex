@@ -1,4 +1,4 @@
-<script src="http://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <%
   money =
@@ -26,18 +26,37 @@
     money_by_categories
     |> Enum.map(& &1["money"])
     |> inspect()
+
+  date =
+    @money_by_date
+    |> Enum.map(fn {date, _money} -> Calendar.strftime(date, "%m-%d") end)
+    |> inspect
+
+  date_money =
+    @money_by_date
+    |> Enum.map(fn {_date, money} -> money end)
+    |> inspect
 %>
 
 <div id="categories" hidden><%= categories %></div>
-<div id="colorCode" hidden><%= color_code %></div>
-<div id="categoriesMoney" hidden><%= categories_money %></div>
+<div id="color-code" hidden><%= color_code %></div>
+<div id="categories-money" hidden><%= categories_money %></div>
+
+<div id="date" hidden><%= date %></div>
+<div id="date-money" hidden><%= date_money %></div>
 
 <.header>
   Household account book <%= Calendar.strftime(@date, "%Y-%m") %>
 </.header>
 
+<form method="get" class="mt-4">
+  <input type="month" name="date" value={Calendar.strftime(@date, "%Y-%m")} required>
+  <button type="submit" class="rounded-lg bg-blue-300 px-4 py-2 ml-2">Search</button>
+</form>
+
 <div>
-  <canvas id="pieChart" class="max-w-md"></canvas>
+  <canvas id="pie-chart" class="max-w-md"></canvas>
+  <canvas id="bar-chart"></canvas>
 </div>
 
 <.table id="moneyByCategory" rows={money_by_categories}>
@@ -49,3 +68,59 @@
     <%= money_by_category["money"] %>円
   </:col>
 </.table>
+
+<script>
+  function replaceAndSplitString(element) {
+    return element.textContent.split(',').map(value => value.replace(/(\'|\"|\[|\]| )/g, ''))
+  }
+
+  function replaceAndSplitStringToNumbers(element) {
+    return replaceAndSplitString(element).map(value => Number(value))
+  }
+
+  var categories = replaceAndSplitString(document.getElementById('categories'))
+  var colorCode = replaceAndSplitString(document.getElementById('color-code'))
+  var categoriesMoney = replaceAndSplitStringToNumbers(document.getElementById('categories-money'))
+
+  var pieCtx = document.getElementById('pie-chart')
+
+  const pieChart = new Chart(pieCtx, {
+    type: 'pie',
+    data: {
+      labels: categories,
+      datasets: [{
+        backgroundColor: colorCode,
+        data: categoriesMoney
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: '<%= Calendar.strftime(@date, "%Y-%m") %>'
+      }
+    }
+  })
+
+  var date = replaceAndSplitString(document.getElementById('date'))
+  var dateMoney = replaceAndSplitStringToNumbers(document.getElementById('date-money'))
+
+  var barCtx = document.getElementById('bar-chart')
+
+  const barChart = new Chart(barCtx, {
+    type: 'bar',
+    data: {
+      labels: date,
+      datasets: [{
+        label: '',
+        data: dateMoney,
+        backgroundColor: '#00bfff'
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: '<%= "#{@date.year}年#{@date.month}月" %>'
+      }
+    }
+  })
+</script>

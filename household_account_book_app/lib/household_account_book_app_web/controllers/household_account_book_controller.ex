@@ -4,13 +4,23 @@ defmodule HouseholdAccountBookAppWeb.HouseholdAccountBookController do
   alias HouseholdAccountBookApp.Incomes
   alias HouseholdAccountBookApp.Purchases
 
-  def summary(conn, _params) do
-    date = Date.utc_today()
+  def summary(conn, %{"date" => date}) do
+    [year, month] =
+      date
+      |> String.split("-")
+      |> Enum.map(fn d -> String.to_integer(d) end)
 
+    render_summary(conn, Date.new!(year, month, 1))
+  end
+
+  def summary(conn, _params) do
+    render_summary(conn, Date.utc_today())
+  end
+
+  defp render_summary(conn, date) do
     sum_incomes = Incomes.sum_incomes_by_month(date)
     money_by_categories = Purchases.get_money_by_categories(date)
     money_by_date = Purchases.get_money_by_date(date)
-
     render(
       conn,
       :summary,
