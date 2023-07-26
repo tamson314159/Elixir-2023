@@ -20,6 +20,7 @@ defmodule HouseholdAccountBookAppWeb.Router do
     get "/", PageController, :home
     resources "/purchases", PurchaseController
     resources "/incomes", IncomeController
+    resources "/categories", CategoryController
 
     get "/household_account_book", HouseholdAccountBookController, :summary
   end

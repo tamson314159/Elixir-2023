@@ -60,4 +60,60 @@ defmodule HouseholdAccountBookApp.PurchasesTest do
       assert %Ecto.Changeset{} = Purchases.change_purchase(purchase)
     end
   end
+
+  describe "categories" do
+    alias HouseholdAccountBookApp.Purchases.Category
+
+    import HouseholdAccountBookApp.PurchasesFixtures
+
+    @invalid_attrs %{category_name: nil, color_code: nil}
+
+    test "list_categories/0 returns all categories" do
+      category = category_fixture()
+      assert Purchases.list_categories() == [category]
+    end
+
+    test "get_category!/1 returns the category with given id" do
+      category = category_fixture()
+      assert Purchases.get_category!(category.id) == category
+    end
+
+    test "create_category/1 with valid data creates a category" do
+      valid_attrs = %{category_name: "some category_name", color_code: "some color_code"}
+
+      assert {:ok, %Category{} = category} = Purchases.create_category(valid_attrs)
+      assert category.category_name == "some category_name"
+      assert category.color_code == "some color_code"
+    end
+
+    test "create_category/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Purchases.create_category(@invalid_attrs)
+    end
+
+    test "update_category/2 with valid data updates the category" do
+      category = category_fixture()
+      update_attrs = %{category_name: "some updated category_name", color_code: "some updated color_code"}
+
+      assert {:ok, %Category{} = category} = Purchases.update_category(category, update_attrs)
+      assert category.category_name == "some updated category_name"
+      assert category.color_code == "some updated color_code"
+    end
+
+    test "update_category/2 with invalid data returns error changeset" do
+      category = category_fixture()
+      assert {:error, %Ecto.Changeset{}} = Purchases.update_category(category, @invalid_attrs)
+      assert category == Purchases.get_category!(category.id)
+    end
+
+    test "delete_category/1 deletes the category" do
+      category = category_fixture()
+      assert {:ok, %Category{}} = Purchases.delete_category(category)
+      assert_raise Ecto.NoResultsError, fn -> Purchases.get_category!(category.id) end
+    end
+
+    test "change_category/1 returns a category changeset" do
+      category = category_fixture()
+      assert %Ecto.Changeset{} = Purchases.change_category(category)
+    end
+  end
 end

@@ -19,4 +19,19 @@ defmodule HouseholdAccountBookApp.PurchasesFixtures do
 
     purchase
   end
+
+  @doc """
+  Generate a category.
+  """
+  def category_fixture(attrs \\ %{}) do
+    {:ok, category} =
+      attrs
+      |> Enum.into(%{
+        category_name: "some category_name",
+        color_code: "some color_code"
+      })
+      |> HouseholdAccountBookApp.Purchases.create_category()
+
+    category
+  end
 end
