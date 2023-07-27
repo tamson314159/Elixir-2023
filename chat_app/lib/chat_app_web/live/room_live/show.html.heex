@@ -10,7 +10,7 @@
 
 <.back navigate={~p"/rooms"}>Back to rooms</.back>
 
-<div class="border rounded-lg p-2 mt-2 overflow-auto h-96">
+<div id="scroll-box" phx-hook="scroll" class="border rounded-lg p-2 mt-2 overflow-auto h-96">
   <%= for message <- @messages do %>
     <%
       margin_class =
@@ -27,8 +27,8 @@
   <% end %>
 </div>
 
-<.simple_form for={@message_form} phx-submit="send_message">
-  <.input field={@message_form[:message]} type="text" placeholder="Enter please message"/>
+<.simple_form for={@message_form} id="message-form" phx-hook="key" phx-submit="send_message">
+  <.input field={@message_form[:message]} id="message-input" type="text" placeholder="Enter please message"/>
   <:actions>
     <.button>Send message</.button>
   </:actions>
