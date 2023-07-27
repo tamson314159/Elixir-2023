@@ -17,6 +17,11 @@ defmodule ChatAppWeb.RoomLive.Show do
   def handle_params(%{"id" => id}, _, socket) do
     socket =
       if room = Rooms.get_room!(id, socket.assigns.current_account.id) do
+
+        if connected?(socket) do
+          subscribe(room)
+        end
+
         socket
         |> assign(:page_title, room.room_name)
         |> assign(:room, room)
@@ -32,6 +37,18 @@ defmodule ChatAppWeb.RoomLive.Show do
   end
 
   @impl true
+  def handle_info({:send_message, message}, socket) do
+    socket =
+      update(socket, :messages, fn messages -> List.insert_at(messages, -1, message) end)
+
+    {:noreply, socket}
+  end
+
+  @impl true
+  def handle_event("send_message", %{"message" => %{"message" => ""}}, socket) do
+    {:noreply, socket}
+  end
+
   def handle_event("send_message", %{"message" => params}, socket) do
     params =
       Map.merge(params, %{"account_id" => socket.assigns.current_account.id, "room_id" => socket.assigns.room.id})
@@ -39,9 +56,9 @@ defmodule ChatAppWeb.RoomLive.Show do
     socket =
       case Rooms.create_message(params) do
         {:ok, message} ->
-          socket
-          |> update(:messages, fn messages -> List.insert_at(messages, -1, message) end)
-          |> assign_form(Rooms.change_message(%Message{}))
+          broadcast(message, :send_message)
+
+          assign_form(socket, Rooms.change_message(%Message{}))
 
         {:error, cs} ->
           assign_form(socket, cs)
@@ -52,5 +69,13 @@ defmodule ChatAppWeb.RoomLive.Show do
 
   defp assign_form(socket, cs) do
     assign(socket, :message_form, to_form(cs))
+  end
+
+  defp subscribe(room) do
+    Phoenix.PubSub.subscribe(ChatApp.PubSub, "room_#{room.id}")
+  end
+
+  defp broadcast(message, :send_message) do
+    Phoenix.PubSub.broadcast(ChatApp.PubSub, "room_#{message.room_id}", {:send_message, message})
   end
 end
