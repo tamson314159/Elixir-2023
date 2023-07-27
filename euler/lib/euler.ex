@@ -38,4 +38,17 @@ defmodule Euler do
       true -> largest_prime_factor(n, p + 1)
     end
   end
+
+  def problem004 do
+    for i <- 100..999, j <- 100..999 do
+      i * j
+    end
+    |> Enum.filter(&palindrome?/1)
+    |> Enum.max()
+  end
+
+  defp palindrome?(n) do
+    str_number = to_string(n)
+    str_number == String.reverse(str_number)
+  end
 end
