@@ -1050,3 +1050,7 @@ end
 ## LiveView のライフサイクル
 
 - ページの読み込みとソケットの確立で2回 mount が呼ばれる
+
+## PubSub
+
+- realtime publisher/subscriber service
