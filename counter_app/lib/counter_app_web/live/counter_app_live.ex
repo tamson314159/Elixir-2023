@@ -10,6 +10,11 @@ defmodule CounterAppWeb.CounterAppLive do
   end
 
   def mount(_param, _session, socket) do
+    # if connected?(socket) do
+    #   IO.puts("2回目")
+    # else
+    #   IO.puts("1回目")
+    # end
     {:ok, assign(socket, :value, 0)}
   end
 

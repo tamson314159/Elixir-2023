@@ -1046,3 +1046,7 @@ end
 ### assign
 
 - assign(socket, key, value) でソケットにkey: value を追加して socket を返す
+
+## LiveView のライフサイクル
+
+- ページの読み込みとソケットの確立で2回 mount が呼ばれる
