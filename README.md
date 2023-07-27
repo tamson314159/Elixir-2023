@@ -1029,3 +1029,16 @@ end
 ### 色の選択
 
 - html フォームで色の選択をするとき、デフォルトで ```color``` 属性が使える
+
+## Phoenix LiveView
+
+- JavaScript をなるべく使わずに動的にページ更新ができる
+- Event を受け取って差分を返す
+
+### SSR
+
+- Server Side Rendering
+
+### WebSocket
+
+- サーバーとの双方向通信
