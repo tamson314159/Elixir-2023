@@ -9,6 +9,7 @@ defmodule ChatApp.Rooms do
 
   alias ChatApp.Rooms.Room
   alias ChatApp.Rooms.Member
+  alias ChatApp.Rooms.Message
 
   @doc """
   Returns the list of rooms.
@@ -22,6 +23,13 @@ defmodule ChatApp.Rooms do
   def list_rooms do
     Room
     |> preload(:accounts)
+    |> Repo.all()
+  end
+
+  def list_messages(room_id) do
+    Message
+    |> where([m], m.room_id == ^room_id)
+    |> preload(:account)
     |> Repo.all()
   end
 
@@ -76,6 +84,18 @@ defmodule ChatApp.Rooms do
     |> Repo.insert()
   end
 
+  def create_message(attrs \\ %{}) do
+    insert_message =
+      %Message{}
+      |> Message.changeset(attrs)
+      |> Repo.insert()
+
+    case insert_message do
+      {:ok, message} -> {:ok, Repo.preload(message, :account)}
+      _ -> insert_message
+    end
+  end
+
   @doc """
   Updates a room.
 
@@ -121,5 +141,9 @@ defmodule ChatApp.Rooms do
   """
   def change_room(%Room{} = room, attrs \\ %{}) do
     Room.changeset(room, attrs)
+  end
+
+  def change_message(%Message{} = message, attrs \\ %{}) do
+    Message.changeset(message, attrs)
   end
 end

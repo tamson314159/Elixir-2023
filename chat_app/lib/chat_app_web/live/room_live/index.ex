@@ -60,7 +60,7 @@ defmodule ChatAppWeb.RoomLive.Index do
 
   @impl true
   def handle_event("delete", %{"id" => id}, socket) do
-    room = Rooms.get_room!(id)
+    room = Rooms.get_room!(id, socket.assigns.current_account.id)
     {:ok, _} = Rooms.delete_room(room)
 
     {:noreply, stream_delete(socket, :rooms, room)}

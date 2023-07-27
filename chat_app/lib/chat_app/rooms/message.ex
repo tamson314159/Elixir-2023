@@ -6,9 +6,9 @@ defmodule ChatApp.Rooms.Message do
   alias ChatApp.Rooms.Room
 
   schema "messages" do
-
-    belongs_to :account_id, Account
-    belongs_to :room_id, Room
+    field :message, :string
+    belongs_to :account, Account
+    belongs_to :room, Room
 
     timestamps(updated_at: false)
   end
@@ -16,7 +16,7 @@ defmodule ChatApp.Rooms.Message do
   @doc false
   def changeset(message, attrs) do
     message
-    |> cast(attrs, [:messages, :account_id, :room_id])
+    |> cast(attrs, [:message, :account_id, :room_id])
     |> validate_required([:message])
   end
 end

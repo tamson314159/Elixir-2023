@@ -3,6 +3,7 @@ defmodule ChatAppWeb.RoomLive.Show do
 
   alias ChatApp.Rooms
   alias ChatApp.Accounts
+  alias ChatApp.Rooms.Message
 
   @impl true
   def mount(_params, session, socket) do
@@ -19,6 +20,8 @@ defmodule ChatAppWeb.RoomLive.Show do
         socket
         |> assign(:page_title, room.room_name)
         |> assign(:room, room)
+        |> assign(:messages, Rooms.list_messages(room.id))
+        |> assign_form(Rooms.change_message(%Message{}))
       else
         socket
         |> put_flash(:error, "Not join room.")
@@ -28,6 +31,26 @@ defmodule ChatAppWeb.RoomLive.Show do
     {:noreply, socket}
   end
 
-  defp page_title(:show), do: "Show Room"
-  defp page_title(:edit), do: "Edit Room"
+  @impl true
+  def handle_event("send_message", %{"message" => params}, socket) do
+    params =
+      Map.merge(params, %{"account_id" => socket.assigns.current_account.id, "room_id" => socket.assigns.room.id})
+
+    socket =
+      case Rooms.create_message(params) do
+        {:ok, message} ->
+          socket
+          |> update(:messages, fn messages -> List.insert_at(messages, -1, message) end)
+          |> assign_form(Rooms.change_message(%Message{}))
+
+        {:error, cs} ->
+          assign_form(socket, cs)
+      end
+
+    {:noreply, socket}
+  end
+
+  defp assign_form(socket, cs) do
+    assign(socket, :message_form, to_form(cs))
+  end
 end
