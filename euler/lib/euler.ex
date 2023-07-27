@@ -26,4 +26,16 @@ defmodule Euler do
     [a, b | tail] = generate_fibonacci(n - 1)
     [a + b, a, b | tail]
   end
+
+  def problem003(n \\ 600851475143) do
+    largest_prime_factor(n, 2)
+  end
+
+  defp largest_prime_factor(n, p) do
+    cond do
+      :math.sqrt(n) < p -> n
+      rem(n, p) == 0 -> largest_prime_factor(div(n, p), p)
+      true -> largest_prime_factor(n, p + 1)
+    end
+  end
 end
