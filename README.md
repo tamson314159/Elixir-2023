@@ -1042,3 +1042,7 @@ end
 ### WebSocket
 
 - サーバーとの双方向通信
+
+### assign
+
+- assign(socket, key, value) でソケットにkey: value を追加して socket を返す
