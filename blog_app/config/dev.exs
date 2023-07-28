@@ -23,7 +23,7 @@ config :blog_app, BlogAppWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "SNTHgnFMQPOT7jCaIIWBGMLpK1ftRGP1GSWGUaOSTes4774ZxeNmGN18sDI9cls7",
+  secret_key_base: "xAR/nDqZnk2jE8EYI8IXr8Pr3KUarPA1d/tgpi10zBYKk/TCpTMyF+EJRJ34gD/J",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
