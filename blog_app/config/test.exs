@@ -1,8 +1,5 @@
 import Config
 
-# Only in tests, remove the complexity from the password hashing algorithm
-config :pbkdf2_elixir, :rounds, 1
-
 # Configure your database
 #
 # The MIX_TEST_PARTITION environment variable can be used
@@ -20,7 +17,7 @@ config :blog_app, BlogApp.Repo,
 # you can enable the server option below.
 config :blog_app, BlogAppWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "eku7wvMqj/hYzWh3LVbQh4aVFuZVGRVHCBfuRg2VmOCUO3U5NRwb8ShZRzqQ8V0r",
+  secret_key_base: "7FdJ2iKkovQ8JteDEksKtIqEiTaVFK4zsoE9h5OLCZRF3pPYxWWzgPn4wHmYCOY+",
   server: false
 
 # In test we don't send emails.

@@ -18,7 +18,7 @@ config :blog_app, BlogAppWeb.Endpoint,
     layout: false
   ],
   pubsub_server: BlogApp.PubSub,
-  live_view: [signing_salt: "8KHRbodY"]
+  live_view: [signing_salt: "4P3oNOyY"]
 
 # Configures the mailer
 #
