@@ -51,4 +51,17 @@ defmodule Euler do
     str_number = to_string(n)
     str_number == String.reverse(str_number)
   end
+
+  def problem005(1), do: 1
+
+  def problem005(n \\ 20) do
+    2..n
+    |> Enum.map(&factorize/1)
+    |> merge_by_max_expornent()
+    |> expand()
+  end
+
+  defp factorize(n, map \\ []) do
+
+  end
 end
