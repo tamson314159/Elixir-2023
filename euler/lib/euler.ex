@@ -51,4 +51,42 @@ defmodule Euler do
     str_number = to_string(n)
     str_number == String.reverse(str_number)
   end
+
+  def problem005(n \\ 20)
+
+  def problem005(1), do: 1
+
+  def problem005(n) do
+    2..n
+    |> Enum.map(&factorize(&1, [{2, 0}]))
+    |> List.flatten()
+    |> Enum.group_by(fn {p, _} -> p end, fn {_, x} -> x end)
+    |> Map.to_list()
+    |> Enum.map(fn {factor, expornets} ->
+      expornet = Enum.max(expornets)
+      {factor, expornet}
+    end)
+    |> Enum.reduce(1, fn {factor, expornent}, acc ->
+      :math.pow(factor, expornent) * acc
+    end)
+    |> round
+  end
+
+  defp factorize(1, factors), do: factors
+
+  defp factorize(n, [{p, 0} | tail]) do
+    if rem(n, p) == 0 do
+      factorize(div(n, p), [{p, 1} | tail])
+    else
+      factorize(n, [{p + 1, 0} | tail])
+    end
+  end
+
+  defp factorize(n, [{p, x} | tail]) do
+    if rem(n, p) == 0 do
+      factorize(div(n, p), [{p, x + 1} | tail])
+    else
+      factorize(n, [{p + 1, 0}, {p, x} | tail])
+    end
+  end
 end
