@@ -14,6 +14,21 @@ defmodule BlogAppWeb.AccountSettingsComponent do
       <div class="space-y-12 divide-y">
         <div>
           <.simple_form
+            for={@profile_form}
+            id="profile_form"
+            phx-target={@myself}
+            phx-submit="update_profile"
+            phx-change="validate_profile"
+          >
+            <.input field={@profile_form[:name]} type="text" label="Name" required />
+            <.input field={@profile_form[:introduction]} type="textarea" label="Introduction" />
+            <:actions>
+              <.button phx-disable-with="Changing...">Change Profile</.button>
+            </:actions>
+          </.simple_form>
+        </div>
+        <div>
+          <.simple_form
             for={@email_form}
             id="email_form"
             phx-target={@myself}
@@ -75,6 +90,35 @@ defmodule BlogAppWeb.AccountSettingsComponent do
       </div>
     </div>
     """
+  end
+
+  def handle_event("validate_profile", %{"account" => params}, socket) do
+    profile_form =
+      socket.assigns.current_account
+      |> Accounts.change_account_profile(params)
+      |> to_form()
+
+    {:noreply, assign(socket, :profile_form, profile_form)}
+  end
+
+  def handle_event("update_profile", %{"account" => params}, socket) do
+    socket =
+      case Accounts.update_account_profile(socket.assigns.current_account, params) do
+        {:ok, account} ->
+          notify_parent({:update_profile, account})
+
+          profile_form =
+            account
+            |> Accounts.change_account_profile()
+            |> to_form()
+
+          assign(socket, :profile_form, profile_form)
+
+        {:error, cs} ->
+          assign(socket, :profile_form, to_form(cs))
+      end
+
+    {:noreply, socket}
   end
 
   def handle_event("validate_email", params, socket) do
@@ -142,6 +186,7 @@ defmodule BlogAppWeb.AccountSettingsComponent do
   end
 
   def update(%{current_account: account} = assigns, socket) do
+    profile_changeset = Accounts.change_account_profile(account)
     email_changeset = Accounts.change_account_email(account)
     password_changeset = Accounts.change_account_password(account)
 
@@ -150,6 +195,7 @@ defmodule BlogAppWeb.AccountSettingsComponent do
       |> assign(:current_password, nil)
       |> assign(:email_form_current_password, nil)
       |> assign(:current_email, account.email)
+      |> assign(:profile_form, to_form(profile_changeset))
       |> assign(:email_form, to_form(email_changeset))
       |> assign(:password_form, to_form(password_changeset))
       |> assign(:trigger_submit, false)

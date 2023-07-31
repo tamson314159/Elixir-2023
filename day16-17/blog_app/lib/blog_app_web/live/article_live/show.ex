@@ -11,14 +11,20 @@ defmodule BlogAppWeb.ArticleLive.Show do
     </div>
 
     <div>
-      <a href={~p"/accounts/profile/#{@article.account_id}"}><%= @article.account.name %></a>
-      <div><%= @article.submit_date %></div>
+      <a
+        href={~p"/accounts/profile/#{@article.account_id}"}
+        class="hover:underline"
+      >
+        <%= @article.account.name %>
+      </a>
+      <div class="text-gray-600 text-xs"><%= @article.submit_date %></div>
       <div>Liked: <%= Enum.count(@article.likes) %></div>
-      <h2><%= @article.title %></h2>
-      <div><%= @article.body %></div>
+      <h2 class="my-2 font-bold text-2xl"><%= @article.title %></h2>
+      <div class="my-2 whitespace-pre-wrap"><%= @article.body %></div>
       <div
         phx-click="like_article"
         phx-value-account_id={@current_account_id}
+        class="rounded-lg w-min py-1 px-2 bg-gray-200 hover:bg-400 cursor-pointer"
         :if={
           @current_account &&
           (@current_account_id != @article.account_id and
@@ -29,12 +35,12 @@ defmodule BlogAppWeb.ArticleLive.Show do
       </div>
     </div>
 
-    <div class="mt-4">
-      <h3>Comment</h3>
-      <div :for={comment <- @article.comments} class="mt-2 border-b">
-        <a href={~p"/accounts/profile/#{comment.account_id}"}><%= comment.account.name %></a>
-        <div><%= Calendar.strftime(comment.inserted_at, "%c") %></div>
-        <div><%= comment.body %></div>
+    <div class="mt-4 border-2 rounded-lg py-2 px-4">
+      <h3 class="font-semibold text-xl">Comment</h3>
+      <div :for={comment <- @article.comments} class="mt-2 border-b last:border-none">
+        <a href={~p"/accounts/profile/#{comment.account_id}"} class="hover:underline"><%= comment.account.name %></a>
+        <div class="text-gray-600 text-xs"><%= Calendar.strftime(comment.inserted_at, "%c") %></div>
+        <div class="my-2 whitespace-pre-wrap"><%= comment.body %></div>
       </div>
       <.simple_form
         for={@form}

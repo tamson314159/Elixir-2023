@@ -9,7 +9,7 @@ defmodule BlogAppWeb.ArticleLive.Summary do
       Listing Articles
     </.header>
 
-    <div>
+    <div class="my-5">
       <.simple_form for={@form} phx-change="search_articles">
         <.input
           field={@form["keyword"]}
@@ -19,13 +19,13 @@ defmodule BlogAppWeb.ArticleLive.Summary do
       </.simple_form>
     </div>
 
-    <div :for={article <- @articles} class="mt-2">
+    <div :for={article <- @articles} class="mt-2 border-2 rounded-lg py-2 px-4 cursor-pointer">
       <a href={~p"/accounts/profile/#{article.account_id}"}>
         <%= article.account.name %>
       </a>
       <a href={~p"/articles/show/#{article.id}"}>
-        <div><%= article.submit_date %></div>
-        <h2><%= article.title %></h2>
+        <div class="test-gray-600 text-xs"><%= article.submit_date %></div>
+        <h2 class="my-2 font-bold text-2xl hover:underlive"><%= article.title %></h2>
         <div>Liked: <%= Enum.count(article.likes) %></div>
       </a>
     </div>
