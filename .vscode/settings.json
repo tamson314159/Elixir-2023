@@ -1,5 +1,7 @@
 {
     "emmet.includeLanguages": {
         "phoenix-heex": "html"
-      }
+      },
+      "editor.tabSize": 2,
+      "editor.dragAndDrop": false
 }

@@ -1054,3 +1054,12 @@ end
 ## PubSub
 
 - realtime publisher/subscriber service
+
+## Live Component
+
+- ライフサイクルは ```mount -> update -> render```
+  - ```mount``` と ```update``` はどちらかを省略できる
+- ```mount``` はソケットだけ受けとる
+  - Live View と違い1回しか呼び出されない
+  - 2回目 以降は ```update```
+- ```update``` は assign も呼ばれる
